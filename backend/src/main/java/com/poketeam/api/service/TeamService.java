@@ -64,6 +64,7 @@ public class TeamService {
     @Transactional
     public void deleteTeam(Long teamId, AppUser user) {
         Team team = requireTeam(teamId, user);
+        teamPokemonRepository.deleteByTeamId(team.getId());
         teamRepository.delete(team);
     }
 
