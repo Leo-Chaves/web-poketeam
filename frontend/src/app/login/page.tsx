@@ -29,7 +29,7 @@ export default function LoginPage() {
       await login({ email, password });
       router.push("/equipes");
     } catch (err) {
-      setError(getErrorMessage(err, "Nao foi possivel entrar agora."));
+      setError(getErrorMessage(err, "Não foi possível entrar agora."));
     } finally {
       setSubmitting(false);
     }
@@ -68,7 +68,7 @@ export default function LoginPage() {
               id="password"
               type="password"
               className="input"
-              placeholder="Minimo de 6 caracteres"
+              placeholder="Mínimo de 6 caracteres"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               required
@@ -83,7 +83,7 @@ export default function LoginPage() {
         </form>
 
         <p className="mt-6 text-sm text-[var(--muted)]">
-          Ainda nao tem conta? <Link href="/cadastro" className="font-semibold text-[var(--brand)]">Criar conta</Link>
+          Ainda não tem conta? <Link href="/cadastro" className="font-semibold text-[var(--brand)]">Criar conta</Link>
         </p>
       </div>
     </section>

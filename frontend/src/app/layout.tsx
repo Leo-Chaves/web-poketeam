@@ -6,7 +6,7 @@ import { AppShell } from "@/components/app-shell";
 export const metadata: Metadata = {
   title: "PokeTeam Builder",
   description:
-    "Aplicacao full stack para buscar Pokemon, montar equipes personalizadas e salvar tudo em um back-end com autenticacao.",
+    "Aplicação full stack para buscar Pokémon, montar equipes personalizadas e salvar tudo em um back-end com autenticação.",
 };
 
 export default function RootLayout({

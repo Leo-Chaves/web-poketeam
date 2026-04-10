@@ -44,7 +44,7 @@ export default function TeamDetailsPage() {
         setTreinador(loadedTeam.treinador);
         setDescricao(loadedTeam.descricao);
       })
-      .catch((err) => setError(getErrorMessage(err, "Nao foi possivel carregar a equipe.")))
+      .catch((err) => setError(getErrorMessage(err, "Não foi possível carregar a equipe.")))
       .finally(() => setLoadingTeam(false));
   }, [hasValidTeamId, isAuthenticated, teamId]);
 
@@ -78,7 +78,7 @@ export default function TeamDetailsPage() {
       setTeam(updatedTeam);
       setMessage("Equipe atualizada com sucesso.");
     } catch (err) {
-      setError(getErrorMessage(err, "Nao foi possivel atualizar a equipe."));
+      setError(getErrorMessage(err, "Não foi possível atualizar a equipe."));
     } finally {
       setSavingTeam(false);
     }
@@ -98,7 +98,7 @@ export default function TeamDetailsPage() {
       await deleteTeam(team.id);
       router.push("/equipes");
     } catch (err) {
-      setError(getErrorMessage(err, "Nao foi possivel excluir a equipe."));
+      setError(getErrorMessage(err, "Não foi possível excluir a equipe."));
     }
   }
 
@@ -123,9 +123,9 @@ export default function TeamDetailsPage() {
         observacao: pokemon.observacao ?? "",
       });
       setTeam(updatedTeam);
-      setMessage(`Pokemon ${pokemon.nomePokemon} atualizado.`);
+      setMessage(`Pokémon ${pokemon.nomePokemon} atualizado.`);
     } catch (err) {
-      setError(getErrorMessage(err, "Nao foi possivel atualizar o Pokemon."));
+      setError(getErrorMessage(err, "Não foi possível atualizar o Pokémon."));
     } finally {
       setSavingPokemonId(null);
     }
@@ -139,9 +139,9 @@ export default function TeamDetailsPage() {
     try {
       const updatedTeam = await removeTeamPokemon(team.id, pokemonId);
       setTeam(updatedTeam);
-      setMessage("Pokemon removido da equipe.");
+      setMessage("Pokémon removido da equipe.");
     } catch (err) {
-      setError(getErrorMessage(err, "Nao foi possivel remover o Pokemon."));
+      setError(getErrorMessage(err, "Não foi possível remover o Pokémon."));
     }
   }
 
@@ -150,7 +150,7 @@ export default function TeamDetailsPage() {
       <section className="panel max-w-3xl">
         <h1 className="text-3xl font-semibold tracking-tight text-[var(--foreground)]">Detalhes da equipe</h1>
         <p className="mt-4 text-base leading-7 text-[var(--muted)]">
-          Faca login para abrir os detalhes da equipe e editar os Pokemon salvos.
+          Faça login para abrir os detalhes da equipe e editar os Pokémon salvos.
         </p>
         <div className="mt-6 flex gap-3">
           <Link href="/login" className="button-primary">Entrar</Link>
@@ -163,8 +163,8 @@ export default function TeamDetailsPage() {
   if (!hasValidTeamId) {
     return (
       <section className="panel max-w-3xl">
-        <h1 className="text-3xl font-semibold tracking-tight text-[var(--foreground)]">Equipe invalida</h1>
-        <p className="mt-4 text-base leading-7 text-[var(--muted)]">O identificador informado nao e valido.</p>
+        <h1 className="text-3xl font-semibold tracking-tight text-[var(--foreground)]">Equipe inválida</h1>
+        <p className="mt-4 text-base leading-7 text-[var(--muted)]">O identificador informado não é válido.</p>
       </section>
     );
   }
@@ -176,7 +176,7 @@ export default function TeamDetailsPage() {
   if (!team) {
     return (
       <section className="panel max-w-3xl">
-        <h1 className="text-3xl font-semibold tracking-tight text-[var(--foreground)]">Equipe nao encontrada</h1>
+        <h1 className="text-3xl font-semibold tracking-tight text-[var(--foreground)]">Equipe não encontrada</h1>
         <p className="mt-4 text-base leading-7 text-[var(--muted)]">Confira o link ou volte para a listagem principal.</p>
         <div className="mt-6">
           <Link href="/equipes" className="button-primary">Voltar para equipes</Link>
@@ -191,10 +191,10 @@ export default function TeamDetailsPage() {
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--brand)]">Equipe</p>
           <h1 className="mt-2 text-3xl font-semibold tracking-tight text-[var(--foreground)]">{team.nomeDaEquipe}</h1>
-          <p className="mt-2 text-base text-[var(--muted)]">{team.pokemons.length}/6 Pokemon cadastrados</p>
+          <p className="mt-2 text-base text-[var(--muted)]">{team.pokemons.length}/6 Pokémon cadastrados</p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <Link href="/buscar" className="button-secondary">Buscar Pokemon</Link>
+          <Link href="/buscar" className="button-secondary">Buscar Pokémon</Link>
           <button type="button" onClick={handleDeleteTeam} className="button-danger">Excluir equipe</button>
         </div>
       </div>
@@ -219,7 +219,7 @@ export default function TeamDetailsPage() {
           </div>
           <div>
             <label className="mb-2 block text-sm font-medium text-[var(--foreground)]" htmlFor="descricao">
-              Descricao
+              Descrição
             </label>
             <textarea id="descricao" className="textarea" value={descricao} onChange={(event) => setDescricao(event.target.value)} />
           </div>
@@ -231,7 +231,7 @@ export default function TeamDetailsPage() {
         <div className="space-y-4">
           {team.pokemons.length === 0 ? (
             <div className="panel">
-              <h2 className="text-xl font-semibold text-[var(--foreground)]">Nenhum Pokemon na equipe</h2>
+              <h2 className="text-xl font-semibold text-[var(--foreground)]">Nenhum Pokémon na equipe</h2>
               <p className="mt-3 text-base leading-7 text-[var(--muted)]">
                 Use a tela de busca para adicionar os primeiros integrantes ao seu time.
               </p>
@@ -274,7 +274,7 @@ export default function TeamDetailsPage() {
                   </div>
 
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-[var(--foreground)]">Posicao</label>
+                    <label className="mb-2 block text-sm font-medium text-[var(--foreground)]">Posição</label>
                     <select
                       className="input"
                       value={pokemon.posicaoNoTime}
@@ -295,7 +295,7 @@ export default function TeamDetailsPage() {
                 </div>
 
                 <div className="mt-4">
-                  <label className="mb-2 block text-sm font-medium text-[var(--foreground)]">Observacao</label>
+                  <label className="mb-2 block text-sm font-medium text-[var(--foreground)]">Observação</label>
                   <textarea
                     className="textarea"
                     value={pokemon.observacao ?? ""}
@@ -315,7 +315,7 @@ export default function TeamDetailsPage() {
                     onClick={() => handleSavePokemon(pokemon.id)}
                     disabled={savingPokemonId === pokemon.id}
                   >
-                    {savingPokemonId === pokemon.id ? "Salvando..." : "Salvar Pokemon"}
+                    {savingPokemonId === pokemon.id ? "Salvando..." : "Salvar Pokémon"}
                   </button>
                 </div>
               </article>

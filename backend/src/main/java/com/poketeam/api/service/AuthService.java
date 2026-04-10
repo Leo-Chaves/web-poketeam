@@ -41,7 +41,7 @@ public class AuthService {
     public AuthResponse register(RegisterRequest request) {
         String normalizedEmail = request.email().trim().toLowerCase();
         if (appUserRepository.existsByEmailIgnoreCase(normalizedEmail)) {
-            throw new BusinessException("Ja existe um usuario com esse e-mail.");
+            throw new BusinessException("Já existe um usuário com esse e-mail.");
         }
 
         AppUser user = AppUser.builder()
@@ -58,10 +58,10 @@ public class AuthService {
     @Transactional
     public AuthResponse login(LoginRequest request) {
         AppUser user = appUserRepository.findByEmailIgnoreCase(request.email().trim().toLowerCase())
-            .orElseThrow(() -> new UnauthorizedException("Credenciais invalidas."));
+            .orElseThrow(() -> new UnauthorizedException("Credenciais inválidas."));
 
         if (!passwordEncoder.matches(request.password(), user.getPasswordHash())) {
-            throw new UnauthorizedException("Credenciais invalidas.");
+            throw new UnauthorizedException("Credenciais inválidas.");
         }
 
         SessionToken sessionToken = createSessionToken(user);

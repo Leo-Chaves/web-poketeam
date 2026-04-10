@@ -51,7 +51,7 @@ export default function SearchPage() {
         });
 
     initialLoad
-      .catch((err) => setError(getErrorMessage(err, "Nao foi possivel carregar a busca de Pokemon.")))
+      .catch((err) => setError(getErrorMessage(err, "Não foi possível carregar a busca de Pokémon.")))
       .finally(() => setLoadingPage(false));
   }, [isAuthenticated]);
 
@@ -63,7 +63,7 @@ export default function SearchPage() {
 
     getTeam(selectedTeamId)
       .then(setSelectedTeam)
-      .catch((err) => setError(getErrorMessage(err, "Nao foi possivel carregar a equipe selecionada.")));
+      .catch((err) => setError(getErrorMessage(err, "Não foi possível carregar a equipe selecionada.")));
   }, [isAuthenticated, selectedTeamId]);
 
   async function handleSearch(event: React.FormEvent<HTMLFormElement>) {
@@ -80,7 +80,7 @@ export default function SearchPage() {
       setPokemons([pokemon]);
       setMessage(`Resultado encontrado para ${pokemon.name}.`);
     } catch (err) {
-      setError(getErrorMessage(err, "Pokemon nao encontrado."));
+      setError(getErrorMessage(err, "Pokémon não encontrado."));
     } finally {
       setSearching(false);
     }
@@ -92,9 +92,9 @@ export default function SearchPage() {
     try {
       const featured = await fetchPokemonList(6);
       setPokemons(featured);
-      setMessage("Seis Pokemon aleatorios foram carregados.");
+      setMessage("Seis Pokémon aleatórios foram carregados.");
     } catch (err) {
-      setError(getErrorMessage(err, "Nao foi possivel carregar a lista aleatoria."));
+      setError(getErrorMessage(err, "Não foi possível carregar a lista aleatória."));
     } finally {
       setSearching(false);
     }
@@ -102,13 +102,13 @@ export default function SearchPage() {
 
   async function handleAddPokemon(pokemon: PokemonCardData) {
     if (!selectedTeamId || !selectedTeam) {
-      setError("Crie ou selecione uma equipe antes de adicionar Pokemon.");
+      setError("Crie ou selecione uma equipe antes de adicionar Pokémon.");
       return;
     }
 
     const nextPosition = getNextAvailablePosition(selectedTeam);
     if (!nextPosition) {
-      setError("A equipe selecionada ja esta completa com 6 Pokemon.");
+      setError("A equipe selecionada já está completa com 6 Pokémon.");
       return;
     }
 
@@ -129,9 +129,9 @@ export default function SearchPage() {
       setSelectedTeam(updatedTeam);
       const refreshedTeams = await listTeams();
       setTeams(refreshedTeams);
-      setMessage(`${pokemon.name} foi adicionado na posicao ${nextPosition}.`);
+      setMessage(`${pokemon.name} foi adicionado na posição ${nextPosition}.`);
     } catch (err) {
-      setError(getErrorMessage(err, "Nao foi possivel adicionar o Pokemon ao time."));
+      setError(getErrorMessage(err, "Não foi possível adicionar o Pokémon ao time."));
     } finally {
       setAddingPokemonId(null);
     }
@@ -145,12 +145,12 @@ export default function SearchPage() {
         <div className="panel">
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--brand)]">Busca</p>
           <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--foreground)]">
-            {isAuthenticated ? "Buscar Pokemon e adicionar ao time" : "Buscar Pokemon"}
+            {isAuthenticated ? "Buscar Pokémon e adicionar ao time" : "Buscar Pokémon"}
           </h1>
           <p className="mt-3 text-base leading-7 text-[var(--muted)]">
             {isAuthenticated
-              ? "Pesquise pelo nome exato do Pokemon ou carregue seis opcoes aleatorias para explorar rapidamente a PokeAPI."
-              : "Explore a PokeAPI livremente, pesquise pelo nome exato e visualize seis opcoes aleatorias sem precisar estar logado."}
+              ? "Pesquise pelo nome exato do Pokémon ou carregue seis opções aleatórias para explorar rapidamente a PokeAPI."
+              : "Explore a PokeAPI livremente, pesquise pelo nome exato e visualize seis opções aleatórias sem precisar estar logado."}
           </p>
 
           <form className="mt-6 flex flex-col gap-3 sm:flex-row" onSubmit={handleSearch}>
@@ -164,7 +164,7 @@ export default function SearchPage() {
               {searching ? "Buscando..." : "Buscar"}
             </button>
             <button type="button" className="button-secondary" onClick={handleShowFeatured} disabled={searching}>
-              Sortear 6 aleatorios
+              Sortear 6 aleatórios
             </button>
           </form>
         </div>
@@ -172,7 +172,7 @@ export default function SearchPage() {
         {isAuthenticated ? (
           <div className="panel">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--brand)]">Equipe alvo</p>
-            <h2 className="mt-3 text-2xl font-semibold text-[var(--foreground)]">Escolha o time que vai receber os Pokemon</h2>
+            <h2 className="mt-3 text-2xl font-semibold text-[var(--foreground)]">Escolha o time que vai receber os Pokémon</h2>
             {teams.length === 0 ? (
               <div className="mt-5 rounded-2xl bg-[var(--surface-alt)] p-4 text-sm text-[var(--foreground)]">
                 Nenhuma equipe criada. <Link href="/equipes/nova" className="font-semibold text-[var(--brand)]">Crie uma equipe primeiro</Link>.
@@ -195,8 +195,8 @@ export default function SearchPage() {
                   <div className="rounded-2xl bg-[var(--surface-alt)] p-4 text-sm text-[var(--foreground)]">
                     <p className="font-semibold">{selectedTeam.nomeDaEquipe}</p>
                     <p className="mt-1 text-[var(--muted)]">Treinador: {selectedTeam.treinador}</p>
-                    <p className="mt-3">Pokemon no time: {selectedTeam.pokemons.length}/6</p>
-                    <p className="mt-1">Proximo slot livre: {nextPosition ?? "Equipe completa"}</p>
+                    <p className="mt-3">Pokémon no time: {selectedTeam.pokemons.length}/6</p>
+                    <p className="mt-1">Próximo slot livre: {nextPosition ?? "Equipe completa"}</p>
                   </div>
                 )}
               </div>
@@ -207,7 +207,7 @@ export default function SearchPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--brand)]">Modo visitante</p>
             <h2 className="mt-3 text-2xl font-semibold text-[var(--foreground)]">Pesquisa liberada, montagem bloqueada</h2>
             <p className="mt-3 text-base leading-7 text-[var(--muted)]">
-              Voce pode pesquisar Pokemon e explorar os cards normalmente. Para criar equipe e adicionar integrantes ao time, basta entrar na sua conta.
+              Você pode pesquisar Pokémon e explorar os cards normalmente. Para criar equipe e adicionar integrantes ao time, basta entrar na sua conta.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/login" className="button-primary">Entrar</Link>
@@ -221,7 +221,7 @@ export default function SearchPage() {
       {message && <p className="rounded-2xl bg-[rgba(26,79,163,0.08)] px-4 py-3 text-sm text-[var(--brand)]">{message}</p>}
 
       {loadingPage ? (
-        <div className="panel text-sm text-[var(--muted)]">Carregando Pokemon...</div>
+        <div className="panel text-sm text-[var(--muted)]">Carregando Pokémon...</div>
       ) : (
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {pokemons.map((pokemon) => (
@@ -287,7 +287,7 @@ export default function SearchPage() {
                 </div>
               ) : (
                 <div className="mt-6 rounded-2xl bg-[var(--surface-alt)] px-4 py-4 text-sm leading-7 text-[var(--muted)]">
-                  Entre para salvar este Pokemon em uma equipe.
+                  Entre para salvar este Pokémon em uma equipe.
                 </div>
               )}
             </article>

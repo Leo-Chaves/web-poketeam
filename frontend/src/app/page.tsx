@@ -23,7 +23,7 @@ async function getRandomPokemon(): Promise<PokemonHomeData> {
   });
 
   if (!response.ok) {
-    throw new Error("Nao foi possivel carregar o Pokemon aleatorio.");
+    throw new Error("Não foi possível carregar o Pokémon aleatório.");
   }
 
   const data = await response.json();
@@ -47,23 +47,23 @@ async function getRandomPokemon(): Promise<PokemonHomeData> {
 
 const highlights = [
   {
-    title: "Descoberta instantanea",
-    text: "Pesquise qualquer Pokemon por nome, analise tipo e atributos e decida rapidamente quem merece entrar no time.",
+    title: "Descoberta instantânea",
+    text: "Pesquise qualquer Pokémon por nome, analise tipo e atributos, e decida rapidamente quem merece entrar no time.",
   },
   {
     title: "Montagem com identidade",
-    text: "Crie equipes com nome, treinador e descricao, mantendo o time com cara de projeto real e apresentavel.",
+    text: "Crie equipes com nome, treinador e descrição, mantendo o time com cara de projeto real e apresentável.",
   },
   {
-    title: "Gestao do seu elenco",
-    text: "Edite apelidos, observacoes e posicoes de cada integrante para deixar a estrategia clara e bem documentada.",
+    title: "Gestão do seu elenco",
+    text: "Edite apelidos, observações e posições de cada integrante para deixar a estratégia clara e bem documentada.",
   },
 ];
 
 const journey = [
   "Entre na plataforma e escolha a identidade da sua equipe.",
-  "Busque Pokemon na PokeAPI e compare rapidamente tipo, sprite e stats.",
-  "Adicione cada integrante ao slot certo e ajuste apelidos ou observacoes.",
+  "Busque Pokémon na PokeAPI e compare rapidamente tipo, sprite e stats.",
+  "Adicione cada integrante ao slot certo e ajuste apelidos ou observações.",
   "Volte aos detalhes da equipe sempre que quiser reorganizar o elenco.",
 ];
 
@@ -81,15 +81,15 @@ export default async function HomePage() {
               PokeTeam Builder
             </p>
             <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Monte sua equipe Pokemon com estilo, estrategia e identidade propria.
+              Monte sua equipe Pokémon com estilo, estratégia e identidade própria.
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
-              Descubra Pokemon aleatorios, explore atributos importantes e monte um time com a sua cara para salvar e organizar do seu jeito.
+              Descubra Pokémon aleatórios, explore atributos importantes e monte um time com a sua cara para salvar e organizar do seu jeito.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/buscar" className="button-primary">
-                Explorar Pokemon
+                Explorar Pokémon
               </Link>
               <Link href="/cadastro" className="button-secondary-dark">
                 Criar conta
@@ -151,7 +151,7 @@ export default async function HomePage() {
               </div>
 
               <p className="relative mt-6 text-sm leading-7 text-[var(--muted)]">
-                Recarregue a pagina para revelar outro Pokemon aleatorio da PokeAPI.
+                Recarregue a página para revelar outro Pokémon aleatório da PokeAPI.
               </p>
             </div>
 
@@ -194,17 +194,17 @@ export default async function HomePage() {
 
         <article className="panel dark-panel">
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">
-            O que voce faz aqui
+            O que você faz aqui
           </p>
           <div className="mt-6 grid gap-3 text-sm leading-7 text-white/90">
             <div className="rounded-2xl border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.03)] px-4 py-4">
-              Cria a identidade do time com nome, treinador e uma descricao mais estrategica.
+              Cria a identidade do time com nome, treinador e uma descrição mais estratégica.
             </div>
             <div className="rounded-2xl border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.03)] px-4 py-4">
               Usa a busca para avaliar quem entra em cada slot, sempre respeitando o limite de 6 integrantes.
             </div>
             <div className="rounded-2xl border border-[rgba(255,255,255,0.06)] bg-[rgba(255,255,255,0.03)] px-4 py-4">
-              Ajusta apelidos e observacoes para transformar a equipe em algo realmente pessoal e apresentavel.
+              Ajusta apelidos e observações para transformar a equipe em algo realmente pessoal e apresentável.
             </div>
           </div>
         </article>

@@ -72,11 +72,11 @@ public class TeamService {
         Team team = requireTeam(teamId, user);
 
         if (team.getPokemons().size() >= 6) {
-            throw new BusinessException("A equipe ja possui 6 Pokemon cadastrados.");
+            throw new BusinessException("A equipe já possui 6 Pokémon cadastrados.");
         }
 
         if (teamPokemonRepository.existsByTeamIdAndPosicaoNoTime(team.getId(), request.posicaoNoTime())) {
-            throw new BusinessException("A posicao escolhida ja esta ocupada nessa equipe.");
+            throw new BusinessException("A posição escolhida já está ocupada nessa equipe.");
         }
 
         TeamPokemon pokemon = TeamPokemon.builder()
@@ -105,7 +105,7 @@ public class TeamService {
         TeamPokemon pokemon = requireTeamPokemon(team, teamPokemonId);
 
         if (teamPokemonRepository.existsByTeamIdAndPosicaoNoTimeAndIdNot(teamId, request.posicaoNoTime(), teamPokemonId)) {
-            throw new BusinessException("A posicao escolhida ja esta ocupada nessa equipe.");
+            throw new BusinessException("A posição escolhida já está ocupada nessa equipe.");
         }
 
         pokemon.setApelido(sanitizeOptional(request.apelido()));
@@ -124,14 +124,14 @@ public class TeamService {
 
     private Team requireTeam(Long teamId, AppUser user) {
         return teamRepository.findByIdAndUserId(teamId, user.getId())
-            .orElseThrow(() -> new ResourceNotFoundException("Equipe nao encontrada."));
+            .orElseThrow(() -> new ResourceNotFoundException("Equipe não encontrada."));
     }
 
     private TeamPokemon requireTeamPokemon(Team team, Long teamPokemonId) {
         return team.getPokemons().stream()
             .filter(pokemon -> pokemon.getId().equals(teamPokemonId))
             .findFirst()
-            .orElseThrow(() -> new ResourceNotFoundException("Pokemon da equipe nao encontrado."));
+            .orElseThrow(() -> new ResourceNotFoundException("Pokémon da equipe não encontrado."));
     }
 
     private TeamSummaryResponse toSummaryResponse(Team team) {

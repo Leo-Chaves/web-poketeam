@@ -21,7 +21,7 @@ export default function NewTeamPage() {
       <section className="panel max-w-3xl">
         <h1 className="text-3xl font-semibold tracking-tight text-[var(--foreground)]">Criar equipe</h1>
         <p className="mt-4 text-base leading-7 text-[var(--muted)]">
-          Faca login para criar equipes e salvar os Pokemon vinculados a sua conta.
+          Faça login para criar equipes e salvar os Pokémon vinculados à sua conta.
         </p>
         <div className="mt-6 flex gap-3">
           <Link href="/login" className="button-primary">Entrar</Link>
@@ -40,7 +40,7 @@ export default function NewTeamPage() {
       const team = await createTeam({ nomeDaEquipe, treinador, descricao });
       router.push(`/equipes/${team.id}`);
     } catch (err) {
-      setError(getErrorMessage(err, "Nao foi possivel criar a equipe."));
+      setError(getErrorMessage(err, "Não foi possível criar a equipe."));
     } finally {
       setSubmitting(false);
     }
@@ -50,9 +50,9 @@ export default function NewTeamPage() {
     <section className="mx-auto max-w-3xl">
       <div className="panel">
         <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--brand)]">Nova equipe</p>
-        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--foreground)]">Criar equipe Pokemon</h1>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--foreground)]">Criar equipe Pokémon</h1>
         <p className="mt-3 text-base leading-7 text-[var(--muted)]">
-          Defina a identidade do time e depois siga para a busca de Pokemon ou para a tela de detalhes da equipe.
+          Defina a identidade do time e depois siga para a busca de Pokémon ou para a tela de detalhes da equipe.
         </p>
 
         <form className="mt-8 space-y-4" onSubmit={handleSubmit}>
@@ -86,14 +86,14 @@ export default function NewTeamPage() {
 
           <div>
             <label className="mb-2 block text-sm font-medium text-[var(--foreground)]" htmlFor="descricao">
-              Descricao
+              Descrição
             </label>
             <textarea
               id="descricao"
               className="textarea"
               value={descricao}
               onChange={(event) => setDescricao(event.target.value)}
-              placeholder="Explique a ideia principal do time, cobertura de tipos e estrategia geral."
+              placeholder="Explique a ideia principal do time, cobertura de tipos e estratégia geral."
               required
             />
           </div>

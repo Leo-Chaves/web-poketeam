@@ -20,7 +20,7 @@ export default function TeamsPage() {
 
     listTeams()
       .then(setTeams)
-      .catch((err) => setError(getErrorMessage(err, "Nao foi possivel carregar as equipes.")))
+      .catch((err) => setError(getErrorMessage(err, "Não foi possível carregar as equipes.")))
       .finally(() => setLoadingTeams(false));
   }, [isAuthenticated]);
 
@@ -34,7 +34,7 @@ export default function TeamsPage() {
       await deleteTeam(teamId);
       setTeams((current) => current.filter((team) => team.id !== teamId));
     } catch (err) {
-      setError(getErrorMessage(err, "Nao foi possivel excluir a equipe."));
+      setError(getErrorMessage(err, "Não foi possível excluir a equipe."));
     }
   }
 
@@ -43,7 +43,7 @@ export default function TeamsPage() {
       <section className="panel max-w-3xl">
         <h1 className="text-3xl font-semibold tracking-tight text-[var(--foreground)]">Minhas equipes</h1>
         <p className="mt-4 text-base leading-7 text-[var(--muted)]">
-          Faca login para listar e gerenciar as equipes salvas na sua conta.
+          Faça login para listar e gerenciar as equipes salvas na sua conta.
         </p>
         <div className="mt-6 flex gap-3">
           <Link href="/login" className="button-primary">Entrar</Link>
@@ -71,7 +71,7 @@ export default function TeamsPage() {
         <div className="panel">
           <h2 className="text-xl font-semibold text-[var(--foreground)]">Nenhuma equipe criada ainda</h2>
           <p className="mt-3 text-base leading-7 text-[var(--muted)]">
-            Crie sua primeira equipe para comecar a adicionar Pokemon e testar o CRUD completo.
+            Crie sua primeira equipe para começar a adicionar Pokémon e testar o CRUD completo.
           </p>
         </div>
       ) : (
@@ -79,7 +79,7 @@ export default function TeamsPage() {
           {teams.map((team) => (
             <article key={team.id} className="panel">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--brand)]">
-                {team.quantidadePokemons}/6 Pokemon
+                {team.quantidadePokemons}/6 Pokémon
               </p>
               <h2 className="mt-3 text-2xl font-semibold text-[var(--foreground)]">{team.nomeDaEquipe}</h2>
               <p className="mt-2 text-sm text-[var(--muted)]">Treinador: {team.treinador}</p>

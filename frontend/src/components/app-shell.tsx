@@ -5,8 +5,8 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import type { ReactNode } from "react";
 
-const publicNavItems = [{ href: "/", label: "Home" }, { href: "/buscar", label: "Buscar Pokemon" }];
-const privateNavItems = [...publicNavItems, { href: "/equipes", label: "Minhas Equipes" }];
+const publicNavItems = [{ href: "/", label: "Início" }, { href: "/buscar", label: "Buscar Pokémon" }];
+const privateNavItems = [...publicNavItems, { href: "/equipes", label: "Minhas equipes" }];
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -22,7 +22,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <Link href="/" className="text-lg font-semibold tracking-tight text-white">
               PokeTeam Builder
             </Link>
-            <p className="text-sm text-[var(--muted)]">Monte, teste e refine o seu elenco Pokemon</p>
+            <p className="text-sm text-[var(--muted)]">Monte, teste e refine o seu elenco Pokémon.</p>
           </div>
 
           <nav className="flex flex-wrap items-center gap-2 text-sm font-medium text-[var(--muted)]">
@@ -37,7 +37,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                   href={item.href}
                   className={`rounded-full px-4 py-2 transition ${
                     isActive
-                      ? "bg-[var(--brand)] text-white"
+                      ? "border border-transparent bg-[var(--brand-strong)] font-extrabold text-[#ffffff] [text-shadow:0_1px_2px_rgba(0,0,0,0.55)]"
                       : "border border-transparent bg-[rgba(255,255,255,0.04)] text-[var(--soft-text)] hover:border-[var(--line)] hover:text-white"
                   }`}
                 >
