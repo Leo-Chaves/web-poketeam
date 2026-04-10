@@ -1,3 +1,8 @@
+# Intergrantes 
+
+LEONARDO CHAVES DA PAZ
+NATHAN MANSUR TENÓRIO DE VASCONCELOS
+
 # PokeTeam Builder
 
 Projeto web com temática Pokémon para buscar criaturas na PokéAPI, montar equipes personalizadas e salvar tudo em um back-end próprio com Spring Boot.
